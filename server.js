@@ -43,12 +43,11 @@ mongoose.connect(db,
 ).then(() => console.log('db connected!'))
 .catch(err => console.log(err))
 
-let port = process.env.PORT
 let server = require('http').createServer(app)
 io = io.listen(server)
 let { User } = require('./utils/user')
 require('./socket/streams')(io, User) 
 require('./socket/chat')(io)
-server.listen(port, () => console.log('server listening @ '+ port))
+server.listen(process.env.PORT, () => console.log('server listening'))
 
 
