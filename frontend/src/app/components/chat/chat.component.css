@@ -1,0 +1,11 @@
+.chatRow {
+    bottom: 0 !important;
+    margin-bottom: 0px !important;
+    position: relative;
+    max-height: 700px;
+}
+
+.anurag {
+    font-size: 30px;
+    font-weight: bold;
+}

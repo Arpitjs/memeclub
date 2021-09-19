@@ -1,0 +1,49 @@
+<app-toolbar></app-toolbar>
+<div class="container" style="margin-top: 30px;">
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="col s12 m8 l9">
+                <div class="col s12 m12 l10">
+                    <div class="row">
+                     <div class="class">
+                         <ul clas="collection">
+                             <li class="collection-item">
+                                 <span class="post">
+                                     {{currentPost}}
+                                 </span>
+                             </li>
+                         </ul>
+                     </div>   
+                    </div>
+            <div class="row">
+                    <div class="card">
+                 <div class="card postDiv">
+                     <div class="card-content">
+                        <form [formGroup]="commentGroup" novalidate (ngSubmit)="commentIt()">
+                            <div class="formDiv">
+                                <textarea formControlName="comment" class="materialize-textarea"></textarea>
+                                <button  [disabled]="commentGroup.invalid" class="btn postBtn">
+                                    add comment
+                                </button>
+                            </div>
+                          </form>
+                     </div>
+                 </div>
+                </div>
+              </div>
+            </div>
+                  <ul class="collection col s12 m10" *ngFor="let comment of comments">
+                    <li class="collection-item avatar">
+                        <img class="circle" src="http://placehold.it/50x50" alt="p">
+                        <span class="title">{{comment.username}}</span>
+                        <p class="time">{{timeFromNow(comment.createdAt)}}</p>
+                        <p class="postComment">{{comment.comment}}</p>
+                    </li>
+                  </ul>
+        </div>
+    </div>
+</div>
+
+<a routerLink="/streams">go back</a>

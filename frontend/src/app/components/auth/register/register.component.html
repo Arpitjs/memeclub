@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="progress" *ngIf="loader">
+      <div class="indeterminate"></div>
+    </div>
+    <div class="col s10 offset-s1">
+      <h3>Register</h3>
+      <div id="error_msg" *ngIf="errorMsg">
+        <span class="e">{{errorMsg}}</span>
+      </div>
+      <form class="col s12" [formGroup]="registerForm" novalidate (ngSubmit)="register()">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="user_name" type="text" formControlName="username">
+            <label for="user_name">Username</label>
+            <span class="error"
+              *ngIf="!registerForm.controls['username'].valid && registerForm.controls['username'].touched">
+              Username is required</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" formControlName="email">
+            <label for="email">Email</label>
+            <span class="error" *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].invalid">
+              invalid email</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" formControlName="password" minlength="4">
+            <label for="password">Password</label>
+            <div  *ngIf="registerForm.controls['password'].errors.required && registerForm.controls['password'].dirty">
+              <div class="error"
+              *ngIf="registerForm.controls['password'].errors.required">
+              password is required</div>
+              <div *ngIf="registerForm.controls['password'].errors.minlength" class="error">
+                password should be more than 4 characters
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn waves-effect" >
+          Sign Up
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

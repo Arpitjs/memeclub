@@ -1,0 +1,26 @@
+.imgCircle {
+    width: 150px !important;
+    height: 150px !important;
+    border-radius: 50% !important;
+    margin: 0 auto !important;
+    top: 20px !important;
+}
+.active {
+    width: 350px !important;
+    height: 350px !important;
+    border-radius: none !important;
+    margin: 0 auto !important;
+}
+.fa-circle {
+    color: rgb(21, 206, 21) !important;
+    font-size: 15px !important;
+}
+.following {
+    color: #64b5f6 !important;
+}
+.card-action {
+    height: 100px;
+}
+.arpit {
+    width: 80px;
+}

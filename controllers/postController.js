@@ -87,19 +87,17 @@ exports.getPosts = async (req, res) => {
         .sort({ created: -1 })
 
     let totalPosts = await Post.countDocuments()
-
+    //get all the popular posts
     let topPosts = await Post.find({ totalLikes: { $gte: 2 } })
         .populate('user')
-    arr = []
-    topPosts.forEach(post => {
+    	arr = []
+    	topPosts.forEach(post => {
         points = {}
+        // calculate the points for the posts's likes and comments 
         post.comments.length ? points.comment = 3 * post.comments.length : points.comment = 0
         post.likes.length ? points.likes = post.likes.length : ''
-
-        //    post.created.getTime() > Ago().getTime() ? points.date = 1 : points.date = -4
-
+        // calculate the points for the dates of the post
         function calcPointsForDates(createdTime) {
-
             let today = new Date()
             let Y = today.getFullYear()
             let M = today.getMonth()
@@ -107,10 +105,10 @@ exports.getPosts = async (req, res) => {
 
             let weekAgo = () => new Date(Y, M, T - 7).getTime()
             let monthAgo = days => new Date(Y, M, T - days).getTime()
-
-            if (createdTime > weekAgo()) {
+            // assign the points based on how old the post is
+            if (createdTime > weekAgo()) { //createdTime = 14 july 2021, weekAgo => 7 july 2021 //yes ahead
                 points.date = 2
-            } else if (createdTime < monthAgo(180)) {
+            } else if (createdTime < monthAgo(120)) {
                 points.date = -5
             } else if (createdTime < monthAgo(90)) {
                 points.date = -4
@@ -123,13 +121,13 @@ exports.getPosts = async (req, res) => {
             }
         }
         calcPointsForDates(post.created.getTime())
-
+        // calculate the final score and add it to the final object along with the post
         let final = {}
         final.post = post
         final.score = points.comment + points.likes + points.date
         arr.push(final)
     })
-
+    // sort all the posts using the sort function
     arr.sort((a, b) => {
         if (a.score > b.score) {
             return -1
@@ -141,14 +139,14 @@ exports.getPosts = async (req, res) => {
     })
     console.log('arey sort', arr)
     let user = await User.findOne({ _id: req.user._id })
-    if (user.country === '' || user.country === null) {
-        request('https://geolocation-db.com/json', { json: true }, async (err, response) => {
-            if (err) console.log(err)
-            await User.updateOne({ _id: req.user._id }, {
-                country: response.body.country_name
-            })
-        })
-    }
+    // if (user.country === '' || user.country === null) {
+    //     request('https://geolocation-db.com/json', { json: true }, async (err, response) => {
+    //         if (err) console.log(err)
+    //         // await User.updateOne({ _id: req.user._id }, {
+    //         //     country: response.body.country_name
+    //         // })
+    //     })
+    // }
     res.status(200).json({ all, arr, totalPosts })
 }
 

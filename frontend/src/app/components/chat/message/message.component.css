@@ -1,0 +1,151 @@
+.nameCol {
+    margin-left: 28px !important;
+    height: auto !important;
+    width: auto !important;
+    padding: 0px !important;
+
+}
+
+.card {
+    height: 60px;
+}
+
+.inputBox {
+    color:black;
+}
+
+.input-field {
+    top: -9px !important;
+}
+
+.inputRow {
+    margin: 0px 10px 0px 10px !important;
+}
+.isOnline {
+    color: white;
+    margin-top: -5px !important;
+    padding: 0px !important;
+    font-size: 15px;
+}
+.chat-bubble:before {
+    content: '\00a0';
+    display: block;
+    height: 16px;
+    width: 9px;
+    position: absolute;
+    bottom: -7.5px;
+}
+
+.chat-bubble.left {
+    background: #f1f0f0;
+    float: left;
+    margin-left: 7px;
+}
+
+.chat-bubble.left:before {
+    background: #f1f0f0;
+    left: 10px;
+    z-index: -1;
+    border-radius: 10px;
+    -webkit-transform: rotate(70deg) skew(5deg);
+    transform: rotate(70deg) skew(5deg);
+}
+
+.chat-bubble.right {
+    background: #64b5f6;
+    color: #fff;
+    float: right;
+    margin-right: 7px;
+}
+
+.chat-bubble.right:before {
+    background: #65b5f6;
+    right: 10px;
+    z-index: -1;
+    border-radius: 10px;
+    -webkit-transform: rotate(118deg) skew(-5deg);
+    transform: rotate(118deg) skew(-5deg);
+}
+
+.chat-bubble.right a.autolinker {
+    color: #fff;
+    font-weight: bold;
+}
+
+.user-messages-top-icon {
+    font-size: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+}
+
+.bar-footer {
+    overflow: visible !important;
+}
+
+.bar-footer textarea {
+    resize: none;
+    height: 25px;
+}
+
+img.profile-pic.left {
+    left: 10px;
+}
+img.profile-pic.right {
+    right: 10px;
+}
+img.imgMsg {
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    max-height: 100px;
+}
+.message {
+    font-size: 16px;
+    
+}
+.message-detail {
+    white-space: pre-line;
+    font-size: 14px;
+}
+.message-wrapper {
+    position: relative;
+}
+.chat-bubble {
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px 10px;
+    position: relative;
+    margin: 10px;
+    max-width: 80%;
+}
+.rowDiv {
+    background: #ffffff !important;
+    height: 61vh !important;
+    max-height: 62vh !important;
+    overflow-y: scroll !important;
+    top: 0px;
+    margin-top: -20px !important;
+}
+.footerDiv {
+    height: 38px;
+    bottom: 0px !important;
+}
+.inputField {
+    height: 38px;
+}
+
+.imgCircle {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    margin: 0 auto !important;
+    top: 20px !important;
+}
+.arpit {
+    padding-left: 90%;
+}
+.arpit2 {
+    padding-right: 90%;
+}

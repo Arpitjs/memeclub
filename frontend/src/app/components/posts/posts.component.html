@@ -1,0 +1,70 @@
+<div>
+<ul class="collection col s12 m12 l10" *ngFor="let post of posts">
+    <li class="collection-item avatar">
+        <img src="https://res.cloudinary.com/arpit7xx/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt=""
+            class="circle">
+        <span class="title">{{post.username}}</span>
+        <span class="title secondary-content modal-trigger" (click)="openEditModal(post)"
+            *ngIf="user.username === post.username" data-target="modal">
+            Edit</span>
+        <p class="time">{{timeFromNow(post.created)}}<br>
+            {{ post.user.country}}
+        </p>
+    </li>
+    <div class="row">
+        
+        <div class="col s12">
+            <div class="card">
+                <div class="card-image" *ngIf="post.imgId">
+                    <img class="postImage"
+                        src="https://res.cloudinary.com/arpit7xx/image/upload/v{{post.imgVersion}}/{{post.imgId}}"
+                        alt="x">
+                </div>
+                <div class="card-content">
+                    <p>{{post.post}}</p>
+                </div>
+                <div class="card-action">
+                    <i [ngClass]="(!checkInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked'"
+                        (click)="like(post)" class="material-icons">thumb_up</i>
+                    <span clas="iconSpan">
+                        {{post.totalLikes}}
+                    </span>
+                    <i class="material-icons"
+                        [ngClass]="(!checkInLikesArray(post.comments, user.username)) ? 'notLiked' : 'liked'"
+                        routerLink="post/{{post._id}}">chat</i>
+                    <span class="iconSpan">
+                        {{post.comments.length}}
+                    </span> 
+                        <share-buttons [theme]="'material-dark'" [include]="['facebook', 'twitter', 'linkedin', 'pinterest', 'reddit']" [show]="5" [size]="1"
+                        [url]="'https://res.cloudinary.com/arpit7xx/image/upload/v1625682086/jpi9os7okoxzboazmbvl'" [autoSetMeta]="false">
+                    </share-buttons>                   
+                </div>
+            </div>
+        </div>
+    </div>
+</ul>
+<div>
+    <mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" (page)="onChangedPage($event)"
+    [pageSizeOptions]="pageSizeOptions" *ngIf="!topStreams">
+   </mat-paginator>
+</div>
+<div class="container">
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h4>Edit
+                <input type="file" ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)">
+                <button class="secondary-content deleteBtn btn" (click)="deletePost()">delete</button>
+            </h4>
+            <p *ngIf="clickedPost">{{clickedPost.post }}</p>
+            <form [formGroup]="editForm" novalidate>
+                <textarea formControlName="editedPost" class="materialize-textarea"></textarea>
+                <div class="modal-footer">
+                    <button class="button" (click)="close()">close</button>&nbsp;
+                    <button class="btn" (click)="submitPost()">save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+  

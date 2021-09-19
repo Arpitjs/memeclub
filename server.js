@@ -41,6 +41,7 @@ mongoose.connect(db,
         useUnifiedTopology: true
     }
 ).then(() => console.log('db connected!'))
+.catch(err => console.log(err))
 
 let port = process.env.PORT
 let server = require('http').createServer(app)

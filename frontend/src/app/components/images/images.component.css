@@ -1,0 +1,39 @@
+.imgCircle {
+    border-radius: 50%;
+}
+.imgCircle {
+    width: 160px !important;
+    height: 160px !important;
+    border-radius: 50%;
+    margin: 0 auto !important;
+}
+
+.imgBtn {
+    margin: 0 auto !important;
+    text-align: center !important;
+    margin-top: 5px !important;
+}
+.active {
+    width: 350px !important;
+    height: 350px !important;
+    border-radius: none !important;
+    margin: 50px 0 px 0px 120px !important;
+}
+@media only screen and (max-width: 480px) {
+    .imgCircle {
+        width: 140px !important;
+        height: 140px !important;
+    }
+}
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  /* Clear floats after image containers */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }

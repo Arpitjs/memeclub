@@ -1,0 +1,42 @@
+<div class="popup" *ngIf="err">
+  <span class="popuptext" id="myPopup">Invalid file format!</span>
+</div>
+  
+  <div class="row">
+    <div class="col s12 m12 l10">
+     <div class="card postDiv">
+         <div class="card-content">
+            <form [formGroup]="postForm" novalidate (ngSubmit)="createPost()">
+                <div class="formDiv">
+                    <textarea formControlName="post" class="materialize-textarea"></textarea>
+                    <div class="file-field input-field">
+                        <div class="row">
+                            <div class="col s6">
+                                <div class="btn">
+                                    <span>
+                                        <i class="material-icon">image</i>
+                                    </span>
+                                    <input type="file" 
+                                    ng2FileSelect [uploader]="uploader"
+                                    (onFileSelected)="onFileSelected($event)">
+                                  </div>
+                                  <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                  </div>
+                            </div>
+                            <div class="col s6">
+                              <button class="btn postBtn" *ngIf="!submitting">
+                                Post
+                            </button>
+                                <button class="btn postBtn" *ngIf="submitting">
+                                    Posting...
+                                </button>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+              </form>
+         </div>
+     </div>
+    </div>
+  </div>
