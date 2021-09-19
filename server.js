@@ -32,8 +32,7 @@ app.use((err, req, res, next) => {
     res.status(status).json(err.msg)
 })
 
-let db = process.env.DB
-mongoose.connect(db, 
+mongoose.connect('mongodb://localhost:27017/memeclub', 
     {
         useNewUrlParser: true,
         useCreateIndex: true,
