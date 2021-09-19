@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
     res.status(status).json(err.msg)
 })
 
-mongoose.connect('mongodb://localhost:27017/memeclub', 
+mongoose.connect('mongodb://arpitjs:okcomputer@memeclub-shard-00-00.2gbcy.mongodb.net:27017,memespace-shard-00-01.2gbcy.mongodb.net:27017,memeclub-shard-00-02.2gbcy.mongodb.net:27017/memeclub?ssl=true&replicaSet=atlas-h2pvqr-shard-0&authSource=admin&retryWrites=true&w=majority', 
     {
         useNewUrlParser: true,
         useCreateIndex: true,
