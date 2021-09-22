@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
     res.status(status).json(err.msg)
 })
 
-mongoose.connect('mongodb+srv://arpitjs:okcomputer@memeclub.2gbcy.mongodb.net/memeclub?retryWrites=true&w=majority', 
+mongoose.connect('mongodb+srv://arpit:okcomputer@cluster0.tf4kb.mongodb.net/mymemeclub?retryWrites=true&w=majority', 
     {
         useNewUrlParser: true,
         useCreateIndex: true,
