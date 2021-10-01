@@ -46,6 +46,7 @@ exports.createPost = catchAsync(async (req, res, next) => {
     if (req.body.post && req.body.image) {
         let iType = Object.values(req.body.image[5])[0]
         if (iType !== 'i') return next({ msg: 'file is not of appropriate type' })
+        // console.log('req body img', req.body.image)
         cloudinary.v2.uploader.upload(req.body.image)
             .then(response => {
                 let reqBody = {

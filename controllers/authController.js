@@ -12,7 +12,8 @@ exports.login = async (req, res, next) => {
 }
 
 function signToken(code, user, res) {
-    let token = jwt.sign({ user }, `${process.env.JWT_KEY}`)
+    // let token = jwt.sign({ user }, `${process.env.JWT_KEY}`)
+    let token = jwt.sign({ user }, process.env.JWT_KEY)
     // res.cookie('auth', token)
     res.status(code).json({ user, token })
 }
@@ -51,7 +52,10 @@ exports.protect = async (req, res, next) => {
                 msg: 'token not provided.'
             })
         }
-       return jwt.verify(token, `${process.env.JWT_KEY}`, async function (err, decoded) {
+       return jwt.verify(token, 
+        // `${process.env.JWT_KEY}`
+        process.env.JWT_KEY
+        , async function (err, decoded) {
         //    console.log(req.headers)
             if (err) {
                 if (err.expiredAt < new Date()) {

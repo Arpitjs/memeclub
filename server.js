@@ -32,7 +32,17 @@ app.use((err, req, res, next) => {
     res.status(status).json(err.msg)
 })
 
-mongoose.connect('mongodb+srv://arpit:okcomputer@cluster0.tf4kb.mongodb.net/mymemeclub?retryWrites=true&w=majority', 
+// mongoose.connect('mongodb+srv://arpit:okcomputer@cluster0.tf4kb.mongodb.net/mymemeclub?retryWrites=true&w=majority', 
+//     {
+//         useNewUrlParser: true,
+//         useCreateIndex: true,
+//         useFindAndModify: false,
+//         useUnifiedTopology: true
+//     }
+// ).then(() => console.log('db connected!'))
+// .catch(err => console.log(err))
+
+mongoose.connect('mongodb://localhost:27017/memeclub', 
     {
         useNewUrlParser: true,
         useCreateIndex: true,
@@ -47,6 +57,6 @@ io = io.listen(server)
 let { User } = require('./utils/user')
 require('./socket/streams')(io, User) 
 require('./socket/chat')(io)
-server.listen(process.env.PORT, () => console.log('server listening'))
+server.listen(process.env.PORT || 8080, () => console.log('server listening'))
 
 
